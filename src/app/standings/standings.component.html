@@ -1,0 +1,46 @@
+<div class="standings-card">
+  <div class="card-header">
+    <p>Select country, league, and team to see the position</p>
+  </div>
+
+  <form class="selection-form">
+    <div class="form-group">
+      <label for="country">Country ID & Name:</label>
+      <select id="country" [(ngModel)]="selectedCountryId" (change)="onCountryChange()" name="country" required>
+        <option value="" disabled selected>Select Country</option>
+        <option *ngFor="let country of countries" [value]="country.country_id">
+          ({{ country.country_id }}) - {{ country.country_name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="league">League ID & Name:</label>
+      <select id="league" [(ngModel)]="selectedLeagueId" (change)="onLeagueChange()" name="league" [disabled]="!selectedCountryId" required>
+        <option value="" disabled selected>Select League</option>
+        <option *ngFor="let league of leagues" [value]="league.league_id">
+          ({{ league.league_id }}) - {{ league.league_name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="team">Team ID & Name:</label>
+      <select id="team" [(ngModel)]="selectedTeamId" (change)="onTeamChange()" name="team" [disabled]="!selectedLeagueId" required>
+        <option value="" disabled selected>Select Team</option>
+        <option *ngFor="let standing of standings" [value]="standing.team_id">
+          ({{ standing.team_id }}) - {{ standing.team_name }}
+        </option>
+      </select>
+    </div>
+  </form>
+
+  <div *ngIf="overallLeaguePosition" class="position-display">
+    <strong>Overall League Position:</strong> {{ overallLeaguePosition }}
+  </div>
+  <div *ngIf="selectedTeam" class="team-details">
+    <img [src]="selectedTeam.team_badge" alt="{{ selectedTeam.team_name }} Badge" class="team-badge" />
+    <p class="team-name">{{ selectedTeam.team_name }}</p>
+  </div>
+
+</div>
