@@ -57,3 +57,18 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+### 🎨 Frontend (`ui-service`)
+
+The frontend is built with Angular and provides:
+
+- Country dropdown
+- League filtering
+- Team standings display
+
+#### Features:
+
+- **Service-based architecture** for clean separation of concerns.
+- **HTTP communication** with the backend.
+- **Material Design UI** via Angular Material.
+- **Dockerized** using Nginx for production-ready deployment.
